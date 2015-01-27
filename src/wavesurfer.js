@@ -24,6 +24,7 @@ var WaveSurfer = {
         normalize     : false,
         audioContext  : null,
         container     : null,
+        peaks         : null,
         dragSelection : true,
         loopSelection : true,
         audioRate     : 1,
@@ -256,7 +257,7 @@ var WaveSurfer = {
             width = parentWidth;
         }
 
-        var peaks = this.backend.getPeaks(width);
+        var peaks = this.params.peaks || this.backend.getPeaks(width);
         this.drawer.drawPeaks(peaks, width);
         this.fireEvent('redraw', peaks, width);
     },
